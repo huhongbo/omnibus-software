@@ -1,0 +1,11 @@
+--- ngx_openresty-1.2.7.1/configure     2013-02-23 06:44:53.000000000 +0000
++++ ngx_openresty-1.2.7.1-fixes/configure       2013-04-05 17:41:00.229795824 +0000
+@@ -265,7 +265,7 @@
+
+ my $ld_opts = '';
+ if (@ngx_ld_opts) {
+-    $ld_opts = " \\\n  --with-ld-opt='@ngx_ld_opts'";
++    $ld_opts = " \\\n  --with-ld-opt='" . join(",", @ngx_ld_opts) . "'";
+ }
+
+ my $cmd = "./configure --prefix=$ngx_prefix"
