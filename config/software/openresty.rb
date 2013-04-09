@@ -30,6 +30,21 @@ build do
   patch :source => 'openresty-1.2.7.1-configure-fixes.patch',
         :target => "./configure"
 
+  # Modify nginx autoconf to link directly against
+  #   /opt/opscode/embedded/lib/libssl.so
+  #   /opt/opscode/embedded/lib/libcrypto.so
+  # This is not an ideal solution. It is not dynamically generated
+  # with respect to install_dir and it doesn't solve the actual
+  # problem in autoconf
+  patch :source => 'openresty-1.2.7.1-omnibus-openssl-autoconf.patch',
+        :target => "./bundle/nginx-1.2.7/auto/lib/openssl/conf"
+
+  configure_env = {
+    "LDFLAGS" => "-R#{install_dir}/embedded/lib -L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
+    "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
+    "LD_RUN_PATH" => "#{install_dir}/embedded/lib"
+  }
+
   command ["./configure",
            "--prefix=#{install_dir}/embedded",
            "--sbin-path=#{install_dir}/embedded/sbin/nginx",
@@ -56,6 +71,6 @@ build do
            #'--with-libatomic'
           ].join(" ")
   # When building with -j > 1, make emits errors about "Jobserver cannot be reached"
-  command "make"
+  command "make", :env => configure_env
   command "make install"
 end

@@ -1,0 +1,11 @@
+--- ngx_openresty-1.2.7.1/bundle/nginx-1.2.7/auto/lib/openssl/conf	2012-01-18 15:07:43.000000000 +0000
++++ ngx_openresty-1.2.7.1-omnibus-fixes/bundle/nginx-1.2.7/auto/lib/openssl/conf	2013-04-08 23:47:53.367435020 +0000
+@@ -47,7 +47,7 @@
+         ngx_feature_run=no
+         ngx_feature_incs="#include <openssl/ssl.h>"
+         ngx_feature_path=
+-        ngx_feature_libs="-lssl -lcrypto"
++        ngx_feature_libs="/opt/opscode/embedded/lib/libssl.so /opt/opscode/embedded/lib/libcrypto.so"
+         ngx_feature_test="SSL_library_init()"
+         . auto/feature
+ 
