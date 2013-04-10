@@ -23,7 +23,7 @@ dependencies ["rsync"]
 source :url => "http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.1.tgz",
        :md5 => "bda7d448143cd5227c640b972f8873de"
 
-relative_path "mongodb-2.4.1"
+relative_path "mongodb-linux-x86_64-2.4.1"
 
 build do
   command "mkdir -p #{install_dir}/embedded/service/mongodb"
