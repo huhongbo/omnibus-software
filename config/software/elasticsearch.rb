@@ -20,11 +20,7 @@ version "0.20.2"
 
 dependencies ["rsync"]
 
-<<<<<<< HEAD
 source :git => "git://github.com/medcl/elasticsearch-rtf"
-=======
-source :git => "git://github.com/medcl/elasticsearch-rtf.git"
->>>>>>> 57619faaa7b7afe60039c2a986351f8394922f43
 
 relative_path "elasticsearch-rtf"
 
