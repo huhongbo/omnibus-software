@@ -21,7 +21,7 @@ version "2.2.3"
 dependencies ["rsync"]
 
 source :url => "http://puppetlabs.com/downloads/mcollective/mcollective-2.2.3.tgz",
-       :md5 => "fad9311718aa86dda881c0668c78e377"
+       :md5 => "a40cc0f4cfd8ba5c85df508588d48e5c"
 
 relative_path "mcollective-2.2.3"
 
