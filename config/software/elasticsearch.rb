@@ -16,11 +16,11 @@
 #
 
 name "elasticsearch"
-#version "0.20.2"
+version "0.20.2"
 
 dependencies ["rsync"]
 
-source :git => "git://github.com/medcl/elasticsearch-rtf"
+source :git => "git://github.com/huhongbo/elasticsearch-rtf"
 
 relative_path "elasticsearch-rtf"
 
