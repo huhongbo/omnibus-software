@@ -26,6 +26,10 @@ source :url => "http://puppetlabs.com/downloads/mcollective/mcollective-2.2.3.tg
 relative_path "mcollective-2.2.3"
 
 build do
-  command "#{install_dir}/embedded/bin/rsync -a ./bin/ #{install_dir}/embedded/bin/"
-  command "#{install_dir}/embedded/bin/rsync -a ./lib/ #{install_dir}/embedded/lib/ruby/1.9.1/"
+  command "mkdir -p #{install_dir}/embedded/service/mcollective"
+  command "#{install_dir}/embedded/bin/rsync -a ./ #{install_dir}/embedded/service/mcollective/"
+  %w{mc-call-agent mco mcollectived}.each do |cmd|
+    command "ln -sf #{install_dir}/embedded/service/mcollective/bin/#{cmd} #{install_dir}/embedded/bin/#{cmd}"
+  end
+  command "cp -rp #{install_dir}/embedded/service/mcollective/lib/* #{install_dir}/embedded/lib/ruby/1.9.1/"
 end

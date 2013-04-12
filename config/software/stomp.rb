@@ -15,16 +15,13 @@
 # limitations under the License.
 #
 
-name "logstash"
-version "1.1.9"
+name "stomp"
+version "1.2.9"
 
-source :url => "https://logstash.objects.dreamhost.com/release/logstash-1.1.9-monolithic.jar",
-       :md5 => "70addd3ccd37e796f473fe5647c31126"
+dependencies ["rubygems"]
 
-relative_path "logstash-1.1.9"
+env = { "GEM_HOME" => nil, "GEM_PATH" => nil }
 
 build do
-  command "mkdir -p #{install_dir}/embedded/service/logstash/tmp"
-  command "cp logstash-1.1.9-monolithic.jar #{install_dir}/embedded/service/logstash"
-  command "ln -sf #{install_dir}/embedded/service/logstash/logstash-1.1.9-monolithic.jar #{install_dir}/embedded/service/logstash/logstash.jar"
+  gem "install stomp --no-rdoc --no-ri -v #{version}", :env => env
 end

@@ -27,4 +27,5 @@ relative_path "elasticsearch-rtf"
 build do
   command "mkdir -p #{install_dir}/embedded/service/elasticsearch"
   command "#{install_dir}/embedded/bin/rsync -a --delete --exclude=.git/*** --exclude=.gitignore ./elasticsearch/ #{install_dir}/embedded/service/elasticsearch/"
+  command "ln -sf #{install_dir}/embedded/service/elasticsearch/bin/elasticsearch #{install_dir}/embedded/bin/elasticsearch"
 end
