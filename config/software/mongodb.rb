@@ -18,7 +18,7 @@
 name "mongodb"
 version "2.4.1"
 
-dependencies ["rsync"]
+dependencies ["rsync", "libpcap"]
 
 source :url => "http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.1.tgz",
        :md5 => "bda7d448143cd5227c640b972f8873de"
