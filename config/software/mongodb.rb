@@ -18,7 +18,7 @@
 name "mongodb"
 version "2.4.1"
 
-dependencies ["rsync", "libpcap"]
+dependencies ["rsync"]
 
 source :url => "http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.1.tgz",
        :md5 => "bda7d448143cd5227c640b972f8873de"
@@ -28,8 +28,9 @@ relative_path "mongodb-linux-x86_64-2.4.1"
 build do
   command "mkdir -p #{install_dir}/embedded/service/mongodb"
   command "#{install_dir}/embedded/bin/rsync -a ./ #{install_dir}/embedded/service/mongodb/"
+  command "rm -f  #{install_dir}/embedded/service/mongodb/bin/mongosniff"
 
-  %w{bsondump mongo mongod mongodump mongoexport mongofiles mongoimport mongooplog mongoperf mongorestore mongos mongosniff mongostat mongotop}.each do |cmd|
+  %w{bsondump mongo mongod mongodump mongoexport mongofiles mongoimport mongooplog mongoperf mongorestore mongos mongostat mongotop}.each do |cmd|
     command "ln -sf #{install_dir}/embedded/service/mongodb/bin/#{cmd} #{install_dir}/embedded/bin/#{cmd}"
   end
 end
