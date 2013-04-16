@@ -35,6 +35,6 @@ end
 build do
   command "./configure --prefix=#{install_dir}/embedded", :env => env
   command "make -j #{max_build_jobs} shared", :env => env
-  command "make install", :env => env
-  command "ln -sf #{install_dir}/embedded/lib/libpcap.so.0.9.8 #{install_dir}/embedded/lib/libpcap.so.0.9", :env => env
+  command "make install install-shared", :env => env
+  command "cd #{install_dir}/embedded/lib; ln -sf libpcap.so.0.9.8 libpcap.so.0.9"
 end
