@@ -26,5 +26,5 @@ relative_path "logstash-1.1.9"
 build do
   command "mkdir -p #{install_dir}/embedded/service/logstash/tmp"
   command "cp logstash-1.1.9-monolithic.jar #{install_dir}/embedded/service/logstash"
-  command "ln -sf #{install_dir}/embedded/service/logstash/logstash-1.1.9-monolithic.jar #{install_dir}/embedded/service/logstash/logstash.jar"
+  command "cd #{install_dir}/embedded/service/logstash;ln -sf logstash-1.1.9-monolithic.jar logstash.jar"
 end
