@@ -21,7 +21,7 @@ version "master"
 
 dependencies ["rsync"]
 
-source :git => "git://github.com/dnt365/info-dashboard"
+source :git => "git://github.com/dn365/info-dashboard"
 
 relative_path "info-dashboard"
 
