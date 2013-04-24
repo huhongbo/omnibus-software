@@ -15,18 +15,18 @@
 # limitations under the License.
 #
 
-name "graylog2-webui"
-version "0.11.0"
+name "info-dashboard"
+
+version "master"
 
 dependencies ["rsync"]
 
-source :url => "http://download.graylog2.org/graylog2-web-interface/graylog2-web-interface-0.11.0.tar.gz",
-       :md5 => "35d20002dbc7f192a1adbcd9b53b2732"
+source :git => "git://github.com/dnt365/info-dashboard"
 
-relative_path "graylog2-web-interface-0.11.0"
+relative_path "info-dashboard"
 
 build do
-  bundle "install --without development test"
-  command "mkdir -p #{install_dir}/embedded/service/graylog2-webui"
-  command "#{install_dir}/embedded/bin/rsync -a ./ #{install_dir}/embedded/service/graylog2-webui/"
+  bundle "install --without development test --path=#{install_dir}/embedded/service/gem_dntmon"
+  command "mkdir -p #{install_dir}/embedded/service/info-dashboard"
+  command "#{install_dir}/embedded/bin/rsync -a --delete --exclude=.git/*** --exclude=.gitignore ./ #{install_dir}/embedded/service/info-dashboard/"
 end

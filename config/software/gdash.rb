@@ -16,12 +16,17 @@
 #
 
 name "gdash"
-version "0.0.5"
 
-dependencies ["rubygems"]
+version "master"
 
-env = { "GEM_HOME" => nil, "GEM_PATH" => nil }
+dependencies ["rsync"]
+
+source :git => "git://github.com/ripienaar/gdash"
+
+relative_path "gdash"
 
 build do
-  gem "install gdash --no-rdoc --no-ri -v #{version}", :env => env
+  bundle "install --without development test"
+  command "mkdir -p #{install_dir}/embedded/service/gdash"
+  command "#{install_dir}/embedded/bin/rsync -a --delete --exclude=.git/*** --exclude=.gitignore ./ #{install_dir}/embedded/service/gdash/"
 end
