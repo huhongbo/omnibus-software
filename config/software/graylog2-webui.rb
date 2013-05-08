@@ -26,7 +26,7 @@ source :url => "http://download.graylog2.org/graylog2-web-interface/graylog2-web
 relative_path "graylog2-web-interface-0.11.0"
 
 build do
-  bundle "install --without development test"
+  bundle "install --without development test --path=#{install_dir}/embedded/service/gem_dntmon"
   command "mkdir -p #{install_dir}/embedded/service/graylog2-webui"
   command "#{install_dir}/embedded/bin/rsync -a ./ #{install_dir}/embedded/service/graylog2-webui/"
 end

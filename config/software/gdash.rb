@@ -26,7 +26,7 @@ source :git => "git://github.com/ripienaar/gdash"
 relative_path "gdash"
 
 build do
-  bundle "install --without development test"
+  bundle "install --without development test --path=#{install_dir}/embedded/service/gem_dntmon"
   command "mkdir -p #{install_dir}/embedded/service/gdash"
   command "#{install_dir}/embedded/bin/rsync -a --delete --exclude=.git/*** --exclude=.gitignore ./ #{install_dir}/embedded/service/gdash/"
 end
