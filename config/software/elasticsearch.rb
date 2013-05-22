@@ -16,16 +16,18 @@
 #
 
 name "elasticsearch"
-version "0.20.2"
+version "0.20.4"
 
 dependencies ["rsync"]
 
-source :git => "git://github.com/huhongbo/elasticsearch-rtf"
+source :url => "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-#{version}.tar.gz",
+       :md5 => "0be0d8c2e2519cfaf49892834fe87954"
 
-relative_path "elasticsearch-rtf"
+relative_path "elasticsearch-0.20.4"
 
 build do
   command "mkdir -p #{install_dir}/embedded/service/elasticsearch"
-  command "#{install_dir}/embedded/bin/rsync -a --delete --exclude=.git/*** --exclude=.gitignore ./elasticsearch/ #{install_dir}/embedded/service/elasticsearch/"
+  command "#{install_dir}/embedded/bin/rsync -a ./ #{install_dir}/embedded/service/elasticsearch/"
   command "ln -sf #{install_dir}/embedded/service/elasticsearch/bin/elasticsearch #{install_dir}/embedded/bin/elasticsearch"
+  command "rm -f #{install_dir}/embedded/service/elasticsearch/lib/sigar/libsigar-amd64-solaris.so"
 end

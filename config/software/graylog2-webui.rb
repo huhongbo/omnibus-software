@@ -20,7 +20,7 @@ version "0.11.0"
 
 dependencies ["rsync"]
 
-source :url => "http://download.graylog2.org/graylog2-web-interface/graylog2-web-interface-0.11.0.tar.gz",
+source :url => "http://download.graylog2.org/graylog2-web-interface/graylog2-web-interface-#{version}.tar.gz",
        :md5 => "35d20002dbc7f192a1adbcd9b53b2732"
 
 relative_path "graylog2-web-interface-0.11.0"
