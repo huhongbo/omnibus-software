@@ -1,5 +1,5 @@
 name "geminabox"
-version "0.10.1"
+version "0.7.0"
 
 dependencies ["rubygems"]
 
