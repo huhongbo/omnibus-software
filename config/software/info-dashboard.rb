@@ -17,7 +17,7 @@
 
 name "info-dashboard"
 
-version "master"
+version "dntmon"
 
 dependencies ["rsync"]
 
