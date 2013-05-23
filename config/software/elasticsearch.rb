@@ -29,5 +29,6 @@ build do
   command "mkdir -p #{install_dir}/embedded/service/elasticsearch"
   command "#{install_dir}/embedded/bin/rsync -a ./ #{install_dir}/embedded/service/elasticsearch/"
   command "ln -sf #{install_dir}/embedded/service/elasticsearch/bin/elasticsearch #{install_dir}/embedded/bin/elasticsearch"
+  command "ln -sf #{install_dir}/embedded/service/elasticsearch/lib/elasticsearch-0.20.4.jar elasticsearch.jar"
   command "rm -f #{install_dir}/embedded/service/elasticsearch/lib/sigar/libsigar-amd64-solaris.so"
 end
