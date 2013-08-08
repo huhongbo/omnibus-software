@@ -16,14 +16,14 @@
 #
 
 name "graylog2-webui"
-version "0.11.0"
+version "0.12.0"
 
 dependencies ["rsync"]
 
-source :url => "http://download.graylog2.org/graylog2-web-interface/graylog2-web-interface-#{version}.tar.gz",
-       :md5 => "35d20002dbc7f192a1adbcd9b53b2732"
+source :url => "https://github.com/Graylog2/graylog2-web-interface/releases/download/#{version}/graylog2-web-interface-#{version}.tar.gz",
+       :md5 => "a35a6501d63c6c5991b57935c322324e"
 
-relative_path "graylog2-web-interface-0.11.0"
+relative_path "graylog2-web-interface-#{version}"
 
 build do
   bundle "install --without development test --path=#{install_dir}/embedded/service/gem_dntmon"

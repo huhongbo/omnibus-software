@@ -16,15 +16,15 @@
 #
 
 name "logstash"
-version "1.1.9"
+version "1.1.13"
 
-source :url => "https://logstash.objects.dreamhost.com/release/logstash-1.1.12-flatjar.jar",
-       :md5 => "fd793a685bc8e4d255fbce561574faef"
+source :url => "https://logstash.objects.dreamhost.com/release/logstash-#{version}-flatjar.jar",
+       :md5 => "fdb8dc147a4a54622b1212ead926be5b"
 
-relative_path "logstash-1.1.12"
+relative_path "logstash-#{version}"
 
 build do
   command "mkdir -p #{install_dir}/embedded/service/logstash/tmp"
   command "cp logstash-1.1.12-flatjar.jar #{install_dir}/embedded/service/logstash"
-  command "cd #{install_dir}/embedded/service/logstash;ln -sf logstash-1.1.12-flatjar.jar logstash.jar"
+  command "cd #{install_dir}/embedded/service/logstash;ln -sf logstash-1.1.13-flatjar.jar logstash.jar"
 end

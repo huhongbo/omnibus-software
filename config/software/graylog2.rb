@@ -16,14 +16,14 @@
 #
 
 name "graylog2"
-version "0.11.0"
+version "0.12.0"
 
 dependencies ["rsync"]
 
-source :url => "http://download.graylog2.org/graylog2-server/graylog2-server-#{version}.tar.gz",
-       :md5 => "135c9eb384a03839e6f2eca82fd03502"
+source :url => "https://github.com/Graylog2/graylog2-server/releases/download/#{version}/graylog2-server-#{version}.tar.gz",
+       :md5 => "31886d2b68da880a59c44ce4e9e3c734"
 
-relative_path "graylog2-server-0.11.0"
+relative_path "graylog2-server-#{version}"
 
 build do
   command "mkdir -p #{install_dir}/embedded/service/graylog2"
