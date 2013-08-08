@@ -25,6 +25,6 @@ relative_path "logstash-#{version}"
 
 build do
   command "mkdir -p #{install_dir}/embedded/service/logstash/tmp"
-  command "cp logstash-1.1.12-flatjar.jar #{install_dir}/embedded/service/logstash"
-  command "cd #{install_dir}/embedded/service/logstash;ln -sf logstash-1.1.13-flatjar.jar logstash.jar"
+  command "cp logstash-#{version}-flatjar.jar #{install_dir}/embedded/service/logstash"
+  command "cd #{install_dir}/embedded/service/logstash;ln -sf logstash-#{version}-flatjar.jar logstash.jar"
 end
