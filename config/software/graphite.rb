@@ -18,8 +18,8 @@
 name "graphite"
 version "0.9.10"
 
-dependencies "pip"
-dependencies "py2cairo"
+dependency "pip"
+dependency "py2cairo"
 
 env = { "PATH" => "#{install_dir}/embedded/bin:#{ENV["PATH"]}" }
 
