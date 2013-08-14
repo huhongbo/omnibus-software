@@ -15,27 +15,24 @@
 # limitations under the License.
 #
 
-name "libpng"
-version "1.5.17"
+name "libbz2"
+version "1.0.6"
 
-dependency "zlib"
+source :url => "http://www.bzip.org/#{version}/bzip2-#{version}.tar.gz",
+       :md5 => "00b516f4704d4a7cb50a1d97e6e8e15b"
 
-source :url => "ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng15/libpng-#{version}.tar.gz",
-       :md5 => "d2e27dbd8c6579d1582b3f128fd284b4"
-
-relative_path "libpng-#{version}"
+relative_path "bzip2-#{version}"
 
 configure_env = {
   "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
   "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
-  "CPPFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
-  "LD_RUN_PATH" => "#{install_dir}/embedded/lib"
+  "LD_RUN_PATH" => "#{install_dir}/embedded/lib",
   "PATH" => "#{install_dir}/embedded/bin:#{ENV["PATH"]}"
-  "PKG_CONFIG_PATH" => "#{install_dir}/embedded/lib/pkgconfig"
 }
 
 build do
-  command "./configure --prefix=#{install_dir}/embedded --with-zlib-prefix=#{install_dir}/embedded", :env => configure_env
-  command "make -j #{max_build_jobs}", :env => configure_env
-  command "make install"
+  command "perl -pi -e 's/\-fpic//g' Makefile-libbz2_so"
+  command "make -f Makefile-libbz2_so", :env => configure_env
+  command "make install PREFIX=#{install_dir}/embedded"
+  command "#{install_dir}/embedded/bin/rsync -a --delete ./libbz2.so* #{install_dir}/embedded/lib/"
 end

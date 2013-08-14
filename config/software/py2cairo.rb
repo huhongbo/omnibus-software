@@ -15,27 +15,27 @@
 # limitations under the License.
 #
 
-name "libpng"
-version "1.5.17"
+name "py2cairo"
+version "1.18.10"
 
-dependency "zlib"
+dependency "libpng"
+dependency "pixman"
+dependency "cairo"
 
-source :url => "ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng15/libpng-#{version}.tar.gz",
-       :md5 => "d2e27dbd8c6579d1582b3f128fd284b4"
+source :url => "http://cairographics.org/releases/py2cairo-#{version}.tar.gz",
+       :md5 => "87421a6a70304120555ba7ba238f3dc3"
 
-relative_path "libpng-#{version}"
+relative_path "py2cairo-#{version}"
 
 configure_env = {
   "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
   "CFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
-  "CPPFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
-  "LD_RUN_PATH" => "#{install_dir}/embedded/lib"
+  "LD_RUN_PATH" => "#{install_dir}/embedded/lib",
   "PATH" => "#{install_dir}/embedded/bin:#{ENV["PATH"]}"
-  "PKG_CONFIG_PATH" => "#{install_dir}/embedded/lib/pkgconfig"
 }
 
 build do
-  command "./configure --prefix=#{install_dir}/embedded --with-zlib-prefix=#{install_dir}/embedded", :env => configure_env
-  command "make -j #{max_build_jobs}", :env => configure_env
+  command "./configure --prefix=#{install_dir}/embedded", :env => configure_env
+  command "make -j #{max_build_jobs}", :env => {"LD_RUN_PATH" => "#{install_dir}/embedded/lib"}
   command "make install"
 end
