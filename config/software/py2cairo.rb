@@ -16,7 +16,7 @@
 #
 
 name "py2cairo"
-version "1.18.10"
+version "1.8.10"
 
 dependency "libpng"
 dependency "pixman"
