@@ -25,7 +25,6 @@ env = { "PATH" => "#{install_dir}/embedded/bin:#{ENV["PATH"]}" }
 
 build do
   command "mkdir -p /opt/chef-server/embedded/service/graphite/webapp"
-  command "chown -R dntmon:root /opt/chef-server/embedded/service/graphite"
   command "pip install whisper==#{version}", :env => env
   command "pip install carbon==#{version} --install-option=\"--prefix=/opt/chef-server/embedded/service/graphite\" --install-option=\"--install-lib=/opt/chef-server/embedded/service/graphite/lib\"", :env => env
   command "pip install django", :env => env
