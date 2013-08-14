@@ -25,7 +25,7 @@ dependency "cairo"
 source :url => "http://cairographics.org/releases/py2cairo-#{version}.tar.gz",
        :md5 => "87421a6a70304120555ba7ba238f3dc3"
 
-relative_path "py2cairo-#{version}"
+relative_path "pycairo-#{version}"
 
 configure_env = {
   "LDFLAGS" => "-L#{install_dir}/embedded/lib -I#{install_dir}/embedded/include",
