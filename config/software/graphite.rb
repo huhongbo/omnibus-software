@@ -26,13 +26,10 @@ env = { "PATH" => "#{install_dir}/embedded/bin:#{ENV["PATH"]}" }
 build do
   command "mkdir -p /opt/chef-server/embedded/service/graphite/webapp"
   command "pip install whisper==#{version}", :env => env
-  command "pip install carbon==#{version} --install-option=\"--prefix=/opt/chef-server/embedded/service/graphite\" --install-option=\"--install-lib=/opt/chef-server/embedded/service/graphite/lib\"", :env => env
-  command "pip install zope.interface"
-  command "pip install twisted"
-  command "pip install txamqp"
+  command "pip install carbon==#{version} --install-option=\"--prefix=/opt/chef-server/embedded/service/graphite\" --install-option=\"--install-lib=/opt/chef-server/embedded/lib/python2.7/site-packages\"", :env => env
   command "pip install django", :env => env
   command "pip install django-tagging", :env => env
-  command "pip install graphite-web==#{version} --install-option=\"--prefix=/opt/chef-server/embedded/service/graphite\" --install-option=\"--install-lib=/opt/chef-server/embedded/service/graphite/webapp\"", :env => env
+  command "pip install graphite-web==#{version} --install-option=\"--prefix=/opt/chef-server/embedded/service/graphite\" --install-option=\"--install-lib=/opt/chef-server/embedded/lib/python2.7/site-packages\"", :env => env
   command "pip install python-memcached", :env => env
   command "pip install pytz", :env => env
   command "pip install pyparsing==1.5.7", :env => env
